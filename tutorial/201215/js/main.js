@@ -1,69 +1,72 @@
-// register the grid component
-Vue.component('demo-grid', {
-    template: '#grid-template',
-    props: {
-      heroes: Array,
-      columns: Array,
-      filterKey: String
+var vm1 = new Vue({
+  el: '#example1',
+  data: {
+    message: '가나다라마바사'
+  },
+  computed: {
+    // 계산된 getter
+    reversedMessage: function () {
+      // `this` 는 vm 인스턴스를 가리킴.
+      return this.message.split('').reverse().join('')
     },
-    data: function () {
-      var sortOrders = {}
-      this.columns.forEach(function (key) {
-        sortOrders[key] = 1
-      })
-      return {
-        sortKey: '',
-        sortOrders: sortOrders
-      }
-    },
-    computed: {
-      filteredHeroes: function () {
-        var sortKey = this.sortKey
-        var filterKey = this.filterKey && this.filterKey.toLowerCase()
-        var order = this.sortOrders[sortKey] || 1
-        var heroes = this.heroes
-        if (filterKey) {
-          heroes = heroes.filter(function (row) {
-            return Object.keys(row).some(function (key) {
-              return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-            })
-          })
-        }
-        if (sortKey) {
-          heroes = heroes.slice().sort(function (a, b) {
-            a = a[sortKey]
-            b = b[sortKey]
-            return (a === b ? 0 : a > b ? 1 : -1) * order
-          })
-        }
-        return heroes
-      }
-    },
-    filters: {
-      capitalize: function (str) {
-        return str.charAt(0).toUpperCase() + str.slice(1)
-      }
-    },
-    methods: {
-      sortBy: function (key) {
-        this.sortKey = key
-        this.sortOrders[key] = this.sortOrders[key] * -1
-      }
+  },
+  methods: {
+    changeText: function(){
+      var newMessage = document.querySelector('#messageInput');
+      this.message  = newMessage.value;
+      newMessage.value = "";
     }
-  })
-  
-  // bootstrap the demo
-  var demo = new Vue({
-    el: '#demo',
-    data: {
-      searchQuery: '',
-      gridColumns: ['name', 'power'],
-      gridData: [
-        { name: 'Chuck Norris', power: Infinity },
-        { name: 'Bruce Lee', power: 9000 },
-        { name: 'Jackie Chan', power: 7000 },
-        { name: 'Jet Li', power: 8000 }
-      ]
+  }
+});
+
+var vm2 = new Vue({
+  el: '#example2',
+  data: {
+    firstName: 'Harry',
+    lastName: 'Porter',
+    fullName: 'Harry Porter'
+  },
+  watch: {
+    // 각각의 값이 바뀌었을 때만 실행됨
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName;
+      console.log('first name이 바뀌었다!')
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val;
+      console.log('last name이 바뀌었다!')
     }
-  })
-  
+  },
+  methods : {
+    changeName: function(){
+      var newFirstName = document.querySelector('#firstName1');
+      var newLastName = document.querySelector('#lastName1');
+
+      this.firstName  = newFirstName.value;
+      this.lastName  = newLastName.value;
+    }
+  }
+});
+
+var vm3 = new Vue({
+  el: '#example3',
+  data: {
+    firstName: 'Harry',
+    lastName: 'Porter'
+  },
+  computed: {
+    fullName: function () {
+      return this.firstName + ' ' + this.lastName
+    }
+  },
+  methods: {
+    changeName: function(){
+      var newFirstName = document.querySelector('#firstName2');
+      var newLastName = document.querySelector('#lastName2');
+
+      this.firstName  = newFirstName.value;
+      this.lastName  = newLastName.value;
+    }
+  }
+});
+

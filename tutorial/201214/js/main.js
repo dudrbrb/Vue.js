@@ -31,8 +31,8 @@ var app4 = new Vue({
   methods: {
     addTodos: function () {
       var app4Input = document.querySelector('#app4Input');
-      this.todos.push({text: app4Input.value})
-      app4Input.value = ""
+      this.todos.push({text: app4Input.value});
+      app4Input.value = "";
     }
   }
 });
