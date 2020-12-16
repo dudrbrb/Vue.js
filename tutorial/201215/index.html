@@ -46,6 +46,18 @@
     <button v-on:click="changeName" style="display: block;">입력</button>
   </div>
 
+  <div id="example4">
+    <h4>watch</h4>
+    <p>
+      질문해보세요 :
+      <input v-model="question">
+      <!-- v-model의 questino은 watch의 question이다. -->
+    </p>
+    <p>{{ answer }}</p>
+  </div>
+  
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/main.js"></script>
 </body>
