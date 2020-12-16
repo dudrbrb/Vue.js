@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +35,14 @@
   
   <div id="example3" v-bind:class="classObject">
     함수로도 바인딩 가능
+  </div>
+
+  <div id="example4" v-bind:class="[activeClass, errorClass]">
+    배열 구문 사용 
+  </div>
+
+  <div id="example5" v-bind:class="[{ active: isActive }, errorClass]">
+    배열 내 객체
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

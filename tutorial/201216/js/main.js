@@ -31,3 +31,20 @@ var vm3 = new Vue({
     }
   }
 });
+
+var vm4 = new Vue({
+  el: '#example4',
+  data: {
+    activeClass: 'active',
+    errorClass: 'text-danger'
+  }
+});
+
+var vm5 = new Vue({
+  el: '#example5',
+  data: {
+    activeClass: 'active',
+    errorClass: 'text-danger',
+    isActive: false,
+  },
+})
