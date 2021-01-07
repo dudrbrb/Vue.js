@@ -17,7 +17,7 @@
             <li v-for="item in items">
               {{ item.message }}
             </li>
-          </ul>
+        </ul>
     </div> 
 
     <div id="example2">
@@ -25,9 +25,19 @@
         <p>v-for는 현재 항목의 인덱스에 대해 두 번째 안자로 전달</p>
         <ul>
             <li v-for="(item, index) in items">
-                {{ parentMessage }} {{ index }} - {{ item.message }}
+                {{ parentMessage }} {{ index + 1}} - {{ item.message }}
             </li>
-          </ul>
+        </ul>
+    </div> 
+    
+    <div id="example3">
+        <h3>v-for와 객체</h3>
+        <p>v-for를 사용하여 객체의 속성을 반복</p>
+        <ul>
+            <li v-for="(value, name, index) in object">
+                {{index  + 1}}.{{name}}: {{ value }}
+            </li>
+        </ul>
     </div> 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
